@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Ticket Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .ticket-details {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .ticket-details th,
+        .ticket-details td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .ticket-details th {
+            background-color: #f2f2f2;
+        }
+
+        .ticket-details tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .print-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .print-button button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .print-button button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Train Ticket Details</h1>
+        <table class="ticket-details">
+            <tr>
+                <th>Ticket Number</th>
+                <th>Train Number</th>
+                <th>Name</th>
+                <th>Passenger Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Seat Number</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>1234567890</td>
+                <td>ABC123</td>
+                <td>John Doe</td>
+                <td>Jane Doe</td>
+                <td>30</td>
+                <td>Male</td>
+                <td>12A</td>
+                <td>Confirmed</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </table>
+
+        <div class="print-button">
+            <button onclick="generatePDF()">Print</button>
+        </div>
+    </div>
+
+    <!-- Include the jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+    <script>
+        function generatePDF() {
+            const doc = new jsPDF();
+            doc.text("Train Ticket Details", 10, 10);
+            doc.autoTable({ html: '.ticket-details' });
+            doc.save('train_ticket_details.pdf');
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1065,6 +1065,7 @@
                                             <input type="hidden" id="sourceStn" name="sourceStn" value="">
                                             <input type="hidden" id="destStn" name="destStn" value="">
                                             <input type="hidden" id="jDate" name="jDate" value="">
+                                            <input type="hidden" id="tFare" name="tFare" value="">
 
 
 
@@ -1126,6 +1127,7 @@
                                                                                         data-train-src="{{i.source}}"
                                                                                         data-train-dest="{{i.destination}}"
                                                                                         data-train-jDate=" {{journeyDate}}"
+                                                                                        data-fare=" {{i.sleeperPrice}}"
                                                                                         type="button">Sleeper(SL)<br>
                                                                                         WL{{i.sleeperWaiting}}<br>
                                                                                         ₹{{i.sleeperPrice}}
@@ -1142,6 +1144,7 @@
                                                                                         data-train-src="{{i.source}}"
                                                                                         data-train-dest="{{i.destination}}"
                                                                                         data-train-jDate=" {{journeyDate}}"
+                                                                                        data-fare=" {{i.sleeperPrice}}"
                                                                                         type="button">Sleeper(SL)<br>
                                                                                         AVL{{i.sleeperAvailable}}<br>
                                                                                         ₹{{i.sleeperPrice}}</button>
@@ -1165,6 +1168,7 @@
                                                                                         data-train-src="{{i.source}}"
                                                                                         data-train-dest="{{i.destination}}"
                                                                                         data-train-jDate=" {{journeyDate}}"
+                                                                                        data-fare=" {{i.acPrice}}"
                                                                                         type="button">
                                                                                         AC 3 Tier (3A)<br>
                                                                                         WL{{i.acWaiting}}<br>
@@ -1181,6 +1185,7 @@
                                                                                         data-train-src="{{i.source}}"
                                                                                         data-train-dest="{{i.destination}}"
                                                                                         data-train-jDate=" {{journeyDate}}"
+                                                                                        data-fare=" {{i.acPrice}}"
                                                                                         type="button">
                                                                                         AC 3 Tier (3A)<br>
                                                                                         AVL{{i.acAvailable}}<br>
@@ -1221,6 +1226,7 @@
                                                                 var trainSrcInput = document.getElementById('sourceStn');
                                                                 var trainDestInput = document.getElementById('destStn');
                                                                 var trainJdateInput = document.getElementById('jDate');
+                                                                var tFareInput = document.getElementById('tFare');
                                                                 var bookingForm = document.getElementById('bookingForm');
 
                                                                 sleeperButtons.forEach(function (button) {
@@ -1231,6 +1237,7 @@
                                                                         var trainSrcValue = this.getAttribute('data-train-src');
                                                                         var trainDestValue = this.getAttribute('data-train-dest');
                                                                         var trainJdateValue = this.getAttribute('data-train-jDate');
+                                                                        var tFareValue = this.getAttribute('data-fare');
                                                                         
                                                                         seletedClassInput.value = value;
                                                                         trainContextInput.value = trainContextValue;
@@ -1238,6 +1245,7 @@
                                                                         trainSrcInput.value=trainSrcValue;
                                                                         trainDestInput.value=trainDestValue;
                                                                         trainJdateInput.value=trainJdateValue;
+                                                                        tFareInput.value=tFareValue;
                                                                         console.log("trainContextValue ",trainContextValue)
                                                                         toggleBookNowButton(this);
                                                                     });
@@ -1251,13 +1259,15 @@
                                                                         var trainSrcValue = this.getAttribute('data-train-src');
                                                                         var trainDestValue = this.getAttribute('data-train-dest');
                                                                         var trainJdateValue = this.getAttribute('data-train-jDate');
-                                                                        
+                                                                        var tFareValue = this.getAttribute('data-fare');
+
                                                                         trainContextInput.value = trainContextValue;
                                                                         seletedClassInput.value = value;
                                                                         trainArrTimeInput.value=trainArrValue;
                                                                         trainSrcInput.value=trainSrcValue;
                                                                         trainDestInput.value=trainDestValue;
                                                                         trainJdateInput.value=trainJdateValue;
+                                                                        tFareInput.value=tFareValue;
                                                                         console.log("trainContextValue ",trainContextValue)
                                                                         toggleBookNowButton(this);
                                                                     });
